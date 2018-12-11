@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    config:
+      profile: test
+      label: master
+#      uri:
+#      - http://localhost:9101/
+      discovery:
+        enabled: true
+        service-id: config-server
+      fail-fast: true
+  application:
+    name: seller-service
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+management:
+  endpoint:
+    refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - 'refresh'

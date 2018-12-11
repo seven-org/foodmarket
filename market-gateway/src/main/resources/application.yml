@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 9001
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+logging:
+  level:
+    org.springframework.web: DEBUG
+zuul:
+  routes:
+    user-server:
+      path: /user/**
+      service-id: user-service
+    seller-server:
+      path: /seller/**
+      service-id: seller-service
+    seller-facade:
+      path: /seller-facade/**
+      service-id: seller-facade
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000

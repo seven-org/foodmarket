@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: user-service
+  jpa:
+    show-sql: true
+    properties:
+      hibernate: 
+        format_sql: true
+  datasource:
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 7
+      connection-test-query: select 1;
+      connection-timeout: 300000
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.75.176.242:30005/foodmarket?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 1JKkU0lG6o
+
+server:
+  port: 8801
+#  servlet:
+#    path: /user
+
+eureka:
+  client:
+    enabled: true
+#    healthcheck:
+#      enabled: true
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+#  instance:
+#    statusPageUrlPath: ${server.servlet.path}/info
+#    healthCheckUrlPath: ${server.servlet.path}/health
+
+logging:
+  level:
+    org.springframework.web: DEBUG

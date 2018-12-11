@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: seller-facade
+
+server:
+  port: 8903
+#  servlet:
+#    path: /seller-facade
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: false
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: basic

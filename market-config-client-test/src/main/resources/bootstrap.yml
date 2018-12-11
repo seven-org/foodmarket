@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      profile: test
+      label: master
+      uri:
+      - http://localhost:9101/
+      fail-fast: true
+  application:
+    name: market-config-client
+server:
+  port: 9201

@@ -1,0 +1,8 @@
+server:
+  port: 9202
+eureka:
+  client:
+    enabled: false
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+from: test-properties-load-precedence

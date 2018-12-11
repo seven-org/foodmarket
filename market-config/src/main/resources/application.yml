@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    bus:
+      enabled: true
+    config:
+      server:
+        git:
+          uri: https://github.com/seven-org/config-repo/
+          search-paths:
+          - market/*
+        overrides:
+          author: lumisixtythree
+          app-name: market
+  rabbitmq:
+#    host: localhost
+    host: rabbit-bus
+    port: 5672
+    username: admin
+    password: admin
+server:
+  port: 9101
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+management:
+  endpoint:
+    bus-refresh:
+      enabled: true
+    refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
